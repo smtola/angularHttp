@@ -11,7 +11,7 @@ export class ProductsService{
   createProducts(products:{pName:string,pDes:string,pPrice:string}){
     console.log(products);
     const header = new HttpHeaders({'myHeader': 'smtola'});
-    this.http.post<{name:string}>('https://products-fd1c2-default-rtdb.firebaseio.com/products.json',products,
+    this.http.post<{name:string}>('https://angularbytlcoding-default-rtdb.firebaseio.com/products.json',products,
       {headers:header})
       .subscribe((res)=>{
         console.log(res);
@@ -20,7 +20,7 @@ export class ProductsService{
 //fetch Product in database
 
   fetchProducts(){
-    return this.http.get<{[key:string]:Products}>('https://products-fd1c2-default-rtdb.firebaseio.com/products.json')
+    return this.http.get<{[key:string]:Products}>('https://angularbytlcoding-default-rtdb.firebaseio.com/products.json')
       .pipe(map((res)=>{
         const products = [];
         for (const key in res){
@@ -34,18 +34,18 @@ export class ProductsService{
   //delete Product in database
 
   deleteProducts(id:string){
-    this.http.delete('https://products-fd1c2-default-rtdb.firebaseio.com/products/'+id+'.json')
+    this.http.delete('https://angularbytlcoding-default-rtdb.firebaseio.com/products/'+id+'.json')
       .subscribe();
   }
   //delete all Product in database
 
   deleteAllProducts(){
-    this.http.delete('https://products-fd1c2-default-rtdb.firebaseio.com/products.json')
+    this.http.delete('https://angularbytlcoding-default-rtdb.firebaseio.com/products.json')
       .subscribe();
   }
 
   updateProduct(id: string, value: Products){
-    this.http.put('https://products-fd1c2-default-rtdb.firebaseio.com/products/'+id+'.json',value)
+    this.http.put('https://angularbytlcoding-default-rtdb.firebaseio.com/products/'+id+'.json',value)
       .subscribe();
   }
 }
